@@ -13,12 +13,10 @@
 
   <properties>
     <java.version>16</java.version>
-    <luckperms.version>5.3</luckperms.version>
-    <minimessage.version>4.1.0-SNAPSHOT</minimessage.version>
-    <paper.version>1.17.1-R0.1-SNAPSHOT</paper.version>
+    <luckperms.version>5.4</luckperms.version>
+    <paper.version>1.19-R0.1-SNAPSHOT</paper.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
-
 
   <dependencies>
     <dependency>
@@ -27,11 +25,7 @@
       <version>${luckperms.version}</version>
       <scope>provided</scope>
     </dependency>
-    <dependency>
-      <groupId>net.kyori</groupId>
-      <artifactId>adventure-text-minimessage</artifactId>
-      <version>${minimessage.version}</version>
-    </dependency>
+
     <dependency>
       <groupId>io.papermc.paper</groupId>
       <artifactId>paper-api</artifactId>
@@ -51,23 +45,8 @@
           <target>${java.version}</target>
         </configuration>
       </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-shade-plugin</artifactId>
-        <version>3.2.4</version>
-        <executions>
-          <execution>
-            <phase>package</phase>
-            <goals>
-              <goal>shade</goal>
-            </goals>
-            <configuration>
-              <createDependencyReducedPom>false</createDependencyReducedPom>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
     </plugins>
+
     <resources>
       <resource>
         <directory>src/main/resources</directory>
@@ -81,17 +60,6 @@
       <id>papermc-repo</id>
       <url>https://papermc.io/repo/repository/maven-public/</url>
     </repository>
-    <repository>
-      <id>sonatype</id>
-      <url>https://oss.sonatype.org/content/groups/public/</url>
-    </repository>
   </repositories>
 
-  <distributionManagement>
-    <repository>
-      <id>github</id>
-      <name>minichat</name>
-      <url>https://maven.pkg.github.com/steenooo/minichat</url>
-    </repository>
-  </distributionManagement>
 </project>

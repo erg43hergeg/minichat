@@ -12,7 +12,7 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 import net.kyori.adventure.audience.Audience;
 import net.kyori.adventure.text.Component;
-import net.kyori.adventure.text.minimessage.Template;
+import net.kyori.adventure.text.minimessage.tag.resolver.TagResolver;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 import org.jetbrains.annotations.NotNull;
@@ -107,9 +107,9 @@ public class MiniChatManager implements MiniChat {
     }
 
 
-    public List<Template> handle(@NotNull Player who, @NotNull Component message,
-        @NotNull Audience audience) {
-        return this.keys.entrySet().stream().map(e -> Template.of(e.getKey(),
+    public List<TagResolver.Single> handle(@NotNull Player who, @NotNull Component message,
+                                           @NotNull Audience audience) {
+        return this.keys.entrySet().stream().map(e -> net.kyori.adventure.text.minimessage.tag.resolver.Placeholder.component(e.getKey(),
                 e.getValue().getResolver().resolve(who, message, audience)))
             .collect(Collectors.toList());
     }

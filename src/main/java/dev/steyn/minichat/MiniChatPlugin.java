@@ -25,7 +25,7 @@ public final class MiniChatPlugin extends JavaPlugin implements Listener {
 
 
     private LuckPerms luckPerms;
-    public final static MiniMessage MINI_MESSAGE = MiniMessage.get();
+    public final static MiniMessage MINI_MESSAGE = MiniMessage.miniMessage();
     public final static LegacyComponentSerializer LEGACY = LegacyComponentSerializer.legacyAmpersand();
     private final MiniChatManager registry = new MiniChatManager();
     private String metaKey;
@@ -94,7 +94,7 @@ public final class MiniChatPlugin extends JavaPlugin implements Listener {
                 if (x.contains("&")) {
                     return LEGACY.deserialize(x);
                 } else {
-                    return MINI_MESSAGE.parse(x);
+                    return MINI_MESSAGE.deserialize(x);
                 }
             }
         }
